@@ -32,11 +32,11 @@ pipeline {
                 bat './mvnw package'
             }
         }
-       /* stage('Archive') {
+       stage('Archive') {
             steps {
-                bat 'rename target\\hrlister-0.0.1-SNAPSHOT.jar hrlister-%BUILD_NUMBER%.jar'
-                archiveArtifacts artifacts: 'target\\hrlister-*.jar', followSymlinks: false
+                bat 'rename target\\PayeTonKawa-0.0.1-SNAPSHOT.jar PayeTonKawa-%BUILD_NUMBER%.jar'
+                archiveArtifacts artifacts: 'target\\PayeTonKawa-*.jar', followSymlinks: false
             }
-        }*/
+        }
     }
 }
