@@ -24,7 +24,7 @@ pipeline {
         }
         stage('Sonar Validation') {
             steps {
-                bat './mvnw verify sonar:sonar -Dsonar.login=634b3180737f5b08ef57317c4263be4fa13370cf -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=les-chomeurs -Dsonar.projectKey=Les-chomeurs_payetonkawa'
+                bat './mvnw verify sonar:sonar -Dsonar.login=634b3180737f5b08ef57317c4263be4fa13370cf -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=les-chomeurs -Dsonar.projectKey=Les-chomeurs_PayeTonKawa'
             }
         }
         stage('Package'){
