@@ -44,8 +44,10 @@ public class LoginController {
             if (!isMailSended){
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new GenericMessage("Erreur interne au serveur lors de l'envoi de mail"));
             }
+            return ResponseEntity.status(HttpStatus.OK).body(new GenericMessage("Connexion réussi, un mail vous a été envoyé"));
+
         }
 
-        return ResponseEntity.status(HttpStatus.OK).body(new GenericMessage("Connexion réussi, un mail vous a été envoyé"));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new GenericMessage("Erreur interne lors de la récupération de l'email"));
     }
 }
