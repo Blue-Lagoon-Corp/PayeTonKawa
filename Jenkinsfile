@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'develop', url: 'https://github.com/Les-chomeurs/PayeTonKawa.git'
+                git branch: 'main', url: 'https://github.com/Les-chomeurs/PayeTonKawa.git'
             }
         }
         stage('Clean') {
