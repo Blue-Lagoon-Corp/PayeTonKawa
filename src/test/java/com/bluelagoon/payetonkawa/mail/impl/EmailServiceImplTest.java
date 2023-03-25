@@ -65,4 +65,30 @@ class EmailServiceImplTest {
 
         Assertions.assertTrue(result);
     }
+
+    @Test
+    void sendEmailTestAndReturnFalse_by_throwing_IOException() throws IOException, WriterException {
+        System.out.println("Begin testing");
+        var to = "test@example.com";
+
+        when(qrCodeService.createQR(anyString()))
+                .thenThrow(IOException.class);
+
+        var result = emailService.sendEmail(to, "toto");
+
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void sendEmailTestAndReturnFalse_by_throwing_WriterException() throws IOException, WriterException {
+        System.out.println("Begin testing");
+        var to = "test@example.com";
+
+        when(qrCodeService.createQR(anyString()))
+                .thenThrow(WriterException.class);
+
+        var result = emailService.sendEmail(to, "toto");
+
+        Assertions.assertFalse(result);
+    }
 }

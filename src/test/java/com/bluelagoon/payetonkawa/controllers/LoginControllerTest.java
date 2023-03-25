@@ -131,4 +131,35 @@ class LoginControllerTest {
                 .andExpect(status().isForbidden())
                 .andExpect(content().json(new Gson().toJson(expectedResponseBody)));
     }
+
+    @Test
+    void loginTest_should_return_status_Internal_Error_Servor_when_has_failed_mail() throws Exception {
+        var tokenEntity = new TokenEntity();
+        tokenEntity.setToken("test");
+        tokenEntity.setCode(1);
+
+        var expectedSuccessEntity = new SuccessEntity();
+        expectedSuccessEntity.setSuccess(tokenEntity);
+
+        var userInfoEntity = new UserInfoEntity();
+        userInfoEntity.setEmail("test@gmail.com");
+
+        var login = new LoginEntity();
+        login.setLogin("test");
+        login.setPassword("test");
+
+        var expectedResponseBody = new GenericMessage("Erreur interne lors de la récupération de l'email");
+
+        when(dolibarrInfraService.login(any())).thenReturn(expectedSuccessEntity);
+
+        when(dolibarrInfraService.getUserEmailByLogin(any(), anyString())).thenReturn(userInfoEntity);
+
+        when(emailService.sendEmail(anyString(), anyString())).thenReturn(false);
+
+        mockMvc.perform(post("/authentication/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(new Gson().toJson(login)))
+                .andExpect(status().isInternalServerError())
+                .andExpect(content().json(new Gson().toJson(expectedResponseBody)));
+    }
 }
