@@ -15,6 +15,7 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -284,4 +285,6 @@ class DolibarrInfraServiceImplTest {
 
         assertThrows(DolibarrUnvalidApiKeyException.class, () -> dolibarrInfraService.getListOfProducts(apiKey));
     }
+
+
 }
