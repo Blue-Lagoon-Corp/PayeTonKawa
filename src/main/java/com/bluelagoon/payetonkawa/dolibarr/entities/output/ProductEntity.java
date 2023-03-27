@@ -9,4 +9,5 @@ public class ProductEntity {
     private String description;
     private String price;
     private String stock_reel;
+    private String url;
 }
